@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de instrucciones — Poema Objeto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tipografías editoriales y monoespaciadas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Configuración de fuentes y estética de papel de galería */
+        :root {
+            --paper-bg: #F7F6F2;
+            --ink-main: #181817;
+            --ink-muted: #666560;
+            --border-subtle: #DCDAD3;
+            --accent-pin: #B93829;
+        }
+
+        body {
+            background-color: var(--paper-bg);
+            color: var(--ink-main);
+            font-family: 'Space Mono', monospace;
+            /* Cuadrícula sutil milimetrada estilo boceto técnico */
+            background-image: 
+                linear-gradient(to right, rgba(24, 24, 23, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(24, 24, 23, 0.035) 1px, transparent 1px);
+            background-size: 28px 28px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-editorial {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Animación de intento de vuelo fallido (temblor anclado) */
+        @keyframes anchoredShake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            15% { transform: translate(-2px, -3px) rotate(-1.5deg); }
+            30% { transform: translate(2px, -2px) rotate(1.5deg); }
+            45% { transform: translate(-2px, 1px) rotate(-1deg); }
+            60% { transform: translate(2px, -2px) rotate(1.2deg); }
+            75% { transform: translate(-1px, 0px) rotate(-0.5deg); }
+        }
+
+        .shake-anchored {
+            animation: anchoredShake 0.45s cubic-bezier(.36,.07,.19,.97) both;
+            transform-origin: 120px 26px; /* Pivotea exactamente desde la chinche */
+        }
+
+        /* Pulso sutil del indicador de estado */
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
+        }
+
+        .status-dot {
+            animation: pulseDot 2.4s infinite ease-in-out;
+        }
+
+        /* Transición suave para mensajes */
+        .fade-msg {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between px-5 py-8 sm:px-10 sm:py-12 selection:bg-stone-800 selection:text-stone-100">
+
+    <!-- Encabezado estilo sala de exposición -->
+    <header class="max-w-xl w-full mx-auto flex items-center justify-between text-[11px] tracking-widest uppercase text-[#666560] border-b border-[#DCDAD3] pb-3">
+        <span>Pieza N.º 01 / Archivo</span>
+        <span class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-700 status-dot"></span>
+            En observación
+        </span>
+    </header>
+
+    <!-- Núcleo poético y visual -->
+    <main class="max-w-xl w-full mx-auto my-auto py-10 sm:py-14 flex flex-col items-center text-center">
+        
+        <!-- Ilustración vectorial del avión de papel clavado con chinche -->
+        <div class="relative mb-8 sm:mb-10 select-none">
+            <svg id="paperPlaneSvg" width="240" height="220" viewBox="0 0 240 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-48 sm:w-56 h-auto drop-shadow-[0_12px_18px_rgba(24,24,23,0.06)]">
+                <!-- Sombra proyectada sobre el papel -->
+                <path d="M120 34L42 186L120 162L198 186L120 34Z" fill="#181817" fill-opacity="0.05" transform="translate(4, 6)"/>
+                
+                <!-- Ala izquierda -->
+                <path d="M120 26L36 182L106 156L120 26Z" fill="#FDFCFA" stroke="#181817" stroke-width="1.3" stroke-linejoin="round"/>
+                
+                <!-- Ala derecha -->
+                <path d="M120 26L204 182L134 156L120 26Z" fill="#F4F2EC" stroke="#181817" stroke-width="1.3" stroke-linejoin="round"/>
+                
+                <!-- Pliegue central (fuselaje interno) -->
+                <path d="M120 26L106 156L120 174L134 156L120 26Z" fill="#E8E5DC" stroke="#181817" stroke-width="1.3" stroke-linejoin="round"/>
+                <line x1="120" y1="26" x2="120" y2="174" stroke="#181817" stroke-width="1" stroke-dasharray="2 2"/>
+
+                <!-- Mini etiqueta QR pegada en el ala derecha -->
+                <g transform="translate(148, 126) rotate(16)">
+                    <rect x="0" y="0" width="22" height="22" rx="1.5" fill="#FFFFFF" stroke="#181817" stroke-width="1"/>
+                    <!-- Patrón minimalista de código QR -->
+                    <rect x="3" y="3" width="5" height="5" stroke="#181817" stroke-width="1" fill="none"/>
+                    <rect x="14" y="3" width="5" height="5" stroke="#181817" stroke-width="1" fill="none"/>
+                    <rect x="3" y="14" width="5" height="5" stroke="#181817" stroke-width="1" fill="none"/>
+                    <rect x="10" y="10" width="2.5" height="2.5" fill="#181817"/>
+                    <rect x="14" y="14" width="2" height="2" fill="#181817"/>
+                    <rect x="17" y="16" width="2" height="2" fill="#181817"/>
+                    <rect x="10" y="4" width="2" height="3" fill="#181817"/>
+                </g>
+
+                <!-- Chinche metálica clavada en la punta (anclaje) -->
+                <g id="thumbtack">
+                    <!-- Sombra de la chinche -->
+                    <circle cx="122.5" cy="28.5" r="7.5" fill="#181817" fill-opacity="0.22"/>
+                    <!-- Base metálica -->
+                    <circle cx="120" cy="26" r="7.5" fill="#B93829" stroke="#181817" stroke-width="1.3"/>
+                    <!-- Brillo superior de la cabeza -->
+                    <circle cx="118.5" cy="24.5" r="3.5" fill="#D45546" stroke="#181817" stroke-width="0.9"/>
+                    <circle cx="117.5" cy="23.5" r="1" fill="#FDFCFA"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Frase poética central -->
+        <h1 class="font-editorial text-3xl sm:text-5xl font-medium tracking-tight leading-[1.15] text-[#181817] max-w-md mb-5">
+            «No vuela.<br>Solo está esperando que lo miren.»
+        </h1>
+
+        <!-- Micro-poema autorreferencial -->
+        <p class="text-xs sm:text-sm leading-relaxed text-[#52514C] max-w-md mb-8">
+            Un avión anclado por una chinche. Un ala que no corta el aire, sino que abre una pantalla. Dejó de ser juguete en el instante en que escaneaste su pliegue: <span class="italic text-[#181817]">si estás leyendo esto, el vuelo ya ocurrió.</span>
+        </p>
+
+        <!-- Interacción sutil -->
+        <div class="flex flex-col items-center gap-3 w-full">
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <button 
+                    id="launchBtn"
+                    type="button"
+                    class="px-5 py-2.5 text-xs uppercase tracking-wider border border-[#181817] bg-[#181817] text-[#F7F6F2] rounded-sm hover:bg-transparent hover:text-[#181817] active:scale-[0.98] transition-all cursor-pointer">
+                    Intentar lanzarlo
+                </button>
+
+                <button 
+                    id="gazeBtn"
+                    type="button"
+                    class="px-4 py-2.5 text-xs uppercase tracking-wider border border-[#DCDAD3] bg-white/60 text-[#181817] rounded-sm hover:border-[#181817] active:scale-[0.98] transition-all cursor-pointer">
+                    Mirar de nuevo
+                </button>
+            </div>
+
+            <!-- Feedback seco / poético tras interactuar -->
+            <div class="h-6 flex items-center justify-center mt-1">
+                <p id="feedbackMsg" class="text-[11px] tracking-wide text-[#B93829] opacity-0 translate-y-1 fade-msg">
+                    Error: anclado a la realidad.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ficha técnica estilo museo / galería -->
+    <footer class="max-w-xl w-full mx-auto border-t border-[#DCDAD3] pt-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-[11px] leading-relaxed">
+            <div>
+                <span class="block uppercase tracking-widest text-[#666560] text-[10px]">Título</span>
+                <span class="font-bold text-[#181817]">Manual de instrucciones (o cómo no volar)</span>
+            </div>
+            <div>
+                <span class="block uppercase tracking-widest text-[#666560] text-[10px]">Objeto principal</span>
+                <span class="text-[#181817]">Hoja de papel doblada</span>
+            </div>
+            <div>
+                <span class="block uppercase tracking-widest text-[#666560] text-[10px]">Intervención</span>
+                <span class="text-[#181817]">Chinche metálica y código QR</span>
+            </div>
+            <div>
+                <span class="block uppercase tracking-widest text-[#666560] text-[10px]">Estado</span>
+                <span class="text-[#181817]">
+                    En reposo / Observado (<span id="viewCount" class="font-bold">1</span> <span id="viewLabel">mirada</span>)
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Referencias a elementos del DOM
+        const launchBtn = document.getElementById('launchBtn');
+        const gazeBtn = document.getElementById('gazeBtn');
+        const paperPlaneSvg = document.getElementById('paperPlaneSvg');
+        const feedbackMsg = document.getElementById('feedbackMsg');
+        const viewCountEl = document.getElementById('viewCount');
+        const viewLabelEl = document.getElementById('viewLabel');
+
+        // Estado de miradas (inicia en 1 por el escaneo actual o recupera sesión local)
+        let views = 1;
+        try {
+            const savedViews = localStorage.getItem('poema_avion_miradas');
+            if (savedViews) {
+                views = parseInt(savedViews, 10) + 1;
+            }
+            localStorage.setItem('poema_avion_miradas', views.toString());
+        } catch (e) {
+            // Fallback silencioso si el almacenamiento local está bloqueado
+        }
+
+        function updateViewDisplay() {
+            viewCountEl.textContent = views;
+            viewLabelEl.textContent = views === 1 ? 'mirada' : 'miradas';
+        }
+        updateViewDisplay();
+
+        // Mensajes secos/irónicos rotativos al intentar lanzar el avión clavado
+        const launchErrors = [
+            "Error: anclado a la realidad.",
+            "Imposible despegar: la chinche pesa más que el viento.",
+            "Acceso denegado al aire. Permanezca mirando.",
+            "Advertencia: este objeto solo vuela en quien lo lee."
+        ];
+        let errorIndex = 0;
+        let msgTimeout;
+
+        function showFeedback(text, isError = true) {
+            clearTimeout(msgTimeout);
+            feedbackMsg.textContent = text;
+            feedbackMsg.style.color = isError ? '#B93829' : '#181817';
+            feedbackMsg.classList.remove('opacity-0', 'translate-y-1');
+            feedbackMsg.classList.add('opacity-100', 'translate-y-0');
+
+            msgTimeout = setTimeout(() => {
+                feedbackMsg.classList.remove('opacity-100', 'translate-y-0');
+                feedbackMsg.classList.add('opacity-0', 'translate-y-1');
+            }, 3200);
+        }
+
+        // Acción: Intentar lanzarlo (temblor anclado en la punta)
+        launchBtn.addEventListener('click', () => {
+            paperPlaneSvg.classList.remove('shake-anchored');
+            // Forzar reflow para reiniciar la animación en clics consecutivos
+            void paperPlaneSvg.offsetWidth;
+            paperPlaneSvg.classList.add('shake-anchored');
+
+            showFeedback(launchErrors[errorIndex], true);
+            errorIndex = (errorIndex + 1) % launchErrors.length;
+        });
+
+        // Acción: Mirar de nuevo (suma una mirada en el registro de sala)
+        gazeBtn.addEventListener('click', () => {
+            views += 1;
+            updateViewDisplay();
+            try {
+                localStorage.setItem('poema_avion_miradas', views.toString());
+            } catch (e) {}
+
+            showFeedback("Mirada registrada en el archivo.", false);
+        });
+    </script>
+</body>
+</html>
